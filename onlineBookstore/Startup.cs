@@ -50,6 +50,10 @@ namespace onlineBookstore
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "Paging",
+                    pattern: "Page{PageNum}",
+                    defaults: new { Controller = "Home", action = "Index" });
                 // E: Replaced "hello world" endpoint with this line of code
                 endpoints.MapDefaultControllerRoute();
             });
