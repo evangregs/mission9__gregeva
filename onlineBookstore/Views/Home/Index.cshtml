@@ -6,16 +6,25 @@
 
 @foreach(Book b in Model.Books)
 {
-    <h3>@b.Title</h3>
-    <p>By @b.Author</p>
-    <ul>
-        <li>@b.Classification</li>
-        <li>@b.Category</li>
-        <li>@b.PageCount pages</li>
-        <li>@b.Publisher</li>
-        <l1>@b.Isbn</l1>
-        <li>$@b.Price</li>
-    </ul>
+    <div class="card card-outline-primary m-1 p-1">
+        <div class="bg-faded p-1" style="background-color:orange">
+            <h3>@b.Title
+                <span class="badge badge-pill badge-primary" style="float:right">
+                    <small>@b.Price.ToString("c")</small>
+                </span>
+            </h3>
+        </div>
+    </div>
+    <div class="card-text p-1">
+        <ul>
+            <li>@b.Author</li>
+            <li>@b.Classification</li>
+            <li>@b.Category</li>
+            <li>@b.PageCount pages</li>
+            <li>@b.Publisher</li>
+            <l1>@b.Isbn</l1>
+        </ul>
+    </div>
     <br />
 }
 
