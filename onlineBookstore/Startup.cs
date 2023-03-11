@@ -33,7 +33,14 @@ namespace onlineBookstore
                options.UseSqlite(Configuration["ConnectionStrings:ReadingRainbow"]);
            });
 
-            services.AddScoped<IOnlineBookstoreRepository, EFOnlineBookstoreRepository>();        }
+            services.AddScoped<IOnlineBookstoreRepository, EFOnlineBookstoreRepository>();
+
+            services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+        
+        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -45,7 +52,7 @@ namespace onlineBookstore
 
             // E: This line of code tells ASP.net to use the files within the wwwroot folders
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
@@ -68,6 +75,8 @@ namespace onlineBookstore
                 
                 // E: Replaced "hello world" endpoint with this line of code
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
         }
     }
