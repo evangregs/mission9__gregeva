@@ -39,6 +39,9 @@ namespace onlineBookstore
 
             services.AddDistributedMemoryCache();
             services.AddSession();
+
+            services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         
         }
 
