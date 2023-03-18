@@ -34,6 +34,7 @@ namespace onlineBookstore
            });
 
             services.AddScoped<IOnlineBookstoreRepository, EFOnlineBookstoreRepository>();
+            services.AddScoped<IPaymentRepository, EFPaymentRepository>();
 
             services.AddRazorPages();
 
